@@ -4,7 +4,7 @@
 #define NUM_STRINGS 42
 #define NUM_LEDS_PER_STRING 10
 #define LED_TYPE WS2811
-CRGB leds[NUM_STRINGS][NUM_LEDS_PER_STRING];
+CRGB leds[NUM_LEDS_PER_STRING];
 
 // Color info
 const int color_neg_three = CRGB(50, 100, 150);
@@ -66,17 +66,15 @@ const int pm25[41][10] =
 };
 
 void setup() {
-  for (int i = 0; i < 42; i++) {
-    FastLED.addLeds<LED_TYPE, 2, RGB>(leds[i], NUM_LEDS_PER_STRING);
-  }
+  FastLED.addLeds<LED_TYPE, 20, RGB>(leds, NUM_LEDS_PER_STRING);
 
   Serial.begin(9600);
 
   clear();
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < NUM_LEDS_PER_STRING; i++) {
     Serial.print("iterator: "); Serial.print(i); Serial.print(" ");
     Serial.print("pm2.5: "); Serial.print(pm25[20][i]); Serial.println(" ");
-    leds[20][i] = colors[pm25[20][i]+3]; 
+    leds[i] = colors[pm25[20][i]+3]; 
   }
   FastLED.show();
 }
@@ -87,10 +85,9 @@ void loop() {
 }
 
 void clear() {
-  for (int i = 0; i < NUM_STRINGS; i++) {
     for (int j = 0; j < NUM_LEDS_PER_STRING; j++) {
-      leds[i][j] = CRGB::Black;
-    }
+      leds[j] = CRGB::Black;
   }
   FastLED.show();
+  delay(100);
 }
