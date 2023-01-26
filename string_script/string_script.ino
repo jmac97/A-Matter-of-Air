@@ -68,13 +68,14 @@ const int pm25[42][10] =
 
 void setup() {
   FastLED.addLeds<LED_TYPE, 20, RGB>(leds, NUM_LEDS_PER_STRING);
+  FastLED.setBrightness(50);
 
   Serial.begin(9600);
 
   clear();
 
-  colorTest();
-//  dataTest();
+//  colorTest();
+  dataTest();
 
   FastLED.show();
 }
