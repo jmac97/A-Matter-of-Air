@@ -7,20 +7,20 @@
 CRGB leds[NUM_LEDS_PER_STRING];
 
 // Color info
-const int color_neg_three = CRGB(50, 100, 150);
-const int color_neg_two = CRGB(50, 100, 150);
-const int color_neg_one = CRGB(50, 100, 150);
-const int color_zero = CRGB(50, 100, 150);
-const int color_one = CRGB(50, 100, 150);
-const int color_two = CRGB(50, 100, 150);
-const int color_three = CRGB(50, 100, 150);
+CRGB color_neg_three = CRGB(1, 60, 127);
+CRGB color_neg_two = CRGB(90, 134, 190);
+CRGB  color_neg_one = CRGB(171, 186, 225);
+CRGB  color_zero = CRGB(180, 177, 176);
+CRGB  color_one = CRGB(211, 154, 154);
+CRGB  color_two = CRGB(200, 99, 104);
+CRGB  color_three = CRGB(219, 0, 1);
 
-const int colors[7][2] = {{-3, color_neg_three}, {-2, color_neg_two}, {-1, color_neg_one}, {0, color_zero}, {1, color_one}, {2, color_two}, {3, color_three}};
+CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_zero, color_one, color_two,color_three};
 
 // PM2.5 data
 // [42] = neighborhood
 // [10] = space time cube value
-const int pm25[41][10] = 
+const int pm25[42][10] = 
 {
 {2.0 ,1.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0},
 {2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0 ,-3.0},
@@ -59,6 +59,7 @@ const int pm25[41][10] =
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-2.0 ,-2.0 ,-3.0 ,-3.0},
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-3.0 ,-3.0 ,-3.0 ,-3.0},
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-2.0 ,-3.0},
+{0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-1.0 ,-2.0 ,-2.0},
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0},
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0},
 {0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0},
@@ -73,7 +74,7 @@ void setup() {
   clear();
   for (int i = 0; i < NUM_LEDS_PER_STRING; i++) {
     Serial.print("iterator: "); Serial.print(i); Serial.print(" ");
-    Serial.print("pm2.5: "); Serial.print(pm25[20][i]); Serial.println(" ");
+    Serial.print("pm2.5: "); Serial.print(pm25[20][i]); Serial.print(" ");
     leds[i] = colors[pm25[20][i]+3]; 
   }
   FastLED.show();
