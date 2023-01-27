@@ -20,7 +20,7 @@ const CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_ze
 // PM2.5 data
 // [42] = neighborhood
 // [13] = space time cube value
-const char pm25[42][13] =
+const char PROGMEM pm25[42][13] =
 {
   {0.0, 2.0 ,3.0 ,2.0 ,1.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0},
   {0.0, 2.0 ,2.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-2.0 ,-3.0 ,-3.0},
@@ -69,7 +69,7 @@ const char pm25[42][13] =
 // death data
 // [42] = neighborhood
 // [13] = space time cube value
-const char death[42][13] =
+const char PROGMEM death[42][13] =
 {
   {3.0 ,3.0 ,3.0 ,3.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
   {3.0 ,3.0 ,3.0 ,3.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
@@ -118,7 +118,7 @@ const char death[42][13] =
 // children asthma data
 // [42] = neighborhood
 // [13] = space time cube value
-const char c_asthma[42][13] =
+const char PROGMEM c_asthma[42][13] =
 {
   {0.0 ,2.0 ,2.0 ,3.0 ,1.0 ,0.0 ,0.0 ,0.0 ,1.0 ,1.0 ,0.0 ,0.0 ,0.0},
   {0.0 ,0.0 ,0.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
@@ -167,7 +167,7 @@ const char c_asthma[42][13] =
 // hospitalization data
 // [42] = neighborhood
 // [13] = space time cube value
-const char hosp[42][13] =
+const char PROGMEM hosp[42][13] =
 {
   {3.0 ,3.0 ,3.0 ,3.0 ,3.0 ,1.0 ,1.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
   {3.0 ,3.0 ,3.0 ,3.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
@@ -216,7 +216,7 @@ const char hosp[42][13] =
 // cardio hospitalization data
 // [42] = neighborhood
 // [13] = space time cube value
-const char cardio[42][13] =
+const char PROGMEM cardio[42][13] =
 {
   {3.0 ,3.0 ,3.0 ,3.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
   {2.0 ,3.0 ,3.0 ,3.0 ,0.0 ,0.0 ,0.0 ,0.0 ,-1.0 ,-1.0 ,0.0 ,0.0 ,0.0},
@@ -265,7 +265,7 @@ const char cardio[42][13] =
 // adult asthma data
 // [42] = neighborhood
 // [13] = space time cube value
-const char a_asthma[42][13] =
+const char PROGMEM a_asthma[42][13] =
 {
   {1.0 ,3.0 ,3.0 ,3.0 ,1.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
   {0.0 ,0.0 ,0.0 ,2.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0 ,0.0},
