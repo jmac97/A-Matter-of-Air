@@ -1,7 +1,7 @@
 
 import xlrd
 
-book = xlrd.open_workbook("data/365_PM_2_5_Values_VisualizeSpaceTimeCube3D1.xls")
+book = xlrd.open_workbook("data/657_asthma_adl_VisualizeSpaceTimeCube3D1.xls")
 sheet = book.sheet_by_index(0)
 amountOfData = sheet.row_values(13)
 
@@ -31,11 +31,11 @@ for x in range(1, 43):
          print("{", end='')
          if end_range == 13:
             print("0.0, ", end='')
-         print(data[y+inc], ",", end='')
+         print(data[y+inc]+3, ",", end='')
       elif y != inc_amount:
-         print(data[y+inc], ",", end='')
+         print(data[y+inc]+3, ",", end='')
       elif y == inc_amount:
-         print(data[y+inc], end='')
+         print(data[y+inc]+3, end='')
    print("},")
    inc += inc_amount
 print("};")
