@@ -19,12 +19,8 @@ const CRGB  color_three = CRGB(255, 0, 0);
 const CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_zero, color_one, color_two, color_three};
 
 // Button pins
-#define button_pm25 53
-const uint8_t button_death = 43;
-const uint8_t button_c_asthma = 44;
-const uint8_t button_resp = 45;
-const uint8_t button_cardio = 46;
-const uint8_t button_a_asthma = 47;
+const uint8_t button_pm25 = 53;
+const uint8_t button_death = 52;
 
 // Button states
 const bool state_pm25 = 0;
@@ -330,14 +326,11 @@ const char PROGMEM a_asthma[42][13] =
 
 
 void setup() {
-  pinMode(INPUT_PULLUP, button_pm25);
-  pinMode(INPUT_PULLUP, button_death);
-  pinMode(INPUT_PULLUP, button_c_asthma);
-  pinMode(INPUT_PULLUP, button_resp);
-  pinMode(INPUT_PULLUP, button_cardio);
-  pinMode(INPUT_PULLUP, button_a_asthma);
+  pinMode(button_pm25, INPUT_PULLUP);
+  pinMode(button_death, INPUT_PULLUP);
   
-  attachPCINT(digitalPinToPCINT(button_pm25), pm25_ISR, FALLING);
+  attachPCINT(digitalPinToPCINT(button_pm25), pm25_ISR, CHANGE);
+  attachPCINT(digitalPinToPCINT(button_death), death_ISR, CHANGE);
 
   FastLED.addLeds<LED_TYPE, 0, RGB>(leds[0], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 1, RGB>(leds[1], NUM_LEDS_PER_STRING);
@@ -352,7 +345,6 @@ void setup() {
   FastLED.addLeds<LED_TYPE, 10, RGB>(leds[10], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 11, RGB>(leds[11], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 12, RGB>(leds[12], NUM_LEDS_PER_STRING);
-  FastLED.addLeds<LED_TYPE, 13, RGB>(leds[13], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 14, RGB>(leds[14], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 15, RGB>(leds[15], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 16, RGB>(leds[16], NUM_LEDS_PER_STRING);
@@ -397,7 +389,7 @@ void setup() {
 
 void loop() {
   
-
+//  cycle();
 }
 
 void clear() {
@@ -453,10 +445,12 @@ void cycle() {
   delay(5000);
 }
 
-void pm25_ISR(void) {
-  clear();
-  show_dataset(pm25);
-  Serial.println("isr");
-  delay(100);
-  FastLED.show();
+void pm25_ISR() {
+  delay(150);
+  Serial.println("pm25");
+}
+
+void death_ISR() {
+  delay(150);
+  Serial.println("death");
 }
