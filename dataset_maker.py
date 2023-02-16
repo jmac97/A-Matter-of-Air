@@ -1,10 +1,10 @@
 
 import xlrd
 
-book = xlrd.open_workbook("data/poverty_data.xls")
+book = xlrd.open_workbook("data/651_Cardio_hosp_VisualizeSpaceTimeCube3D1.xls")
 sheet = book.sheet_by_index(0)
 
-poverty_data = 1;
+poverty_data = 0;
 
 if poverty_data == 1:
    print("{", end='')
@@ -40,10 +40,10 @@ else:
    print(amountOfData[1])
    if amountOfData[1] == 0:
       inc_amount = 12
-      # end_range = 13
+      end_range = 13
    elif amountOfData[1] == 12:
       inc_amount = 13
-      # end_range = 14
+      end_range = 14
    else:
       print("range error")
 
@@ -58,10 +58,11 @@ else:
             print("{", end='')
             # if end_range == 13:
             #    print("0.0, ", end='')
+            if inc_amount != 13:
+               print(data[y+inc]+3, ",", end='')
+         elif y != inc_amount:
             print(data[y+inc]+3, ",", end='')
-         elif y != 12:
-            print(data[y+inc]+3, ",", end='')
-         elif y == 12:
+         elif y == inc_amount:
             print(data[y+inc]+3, end='')
       print("},")
       inc += inc_amount
