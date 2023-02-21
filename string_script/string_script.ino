@@ -32,7 +32,7 @@ const uint8_t button_cardio = A11;
 const uint8_t button_poverty = A12;
 
 const char poverty[42] = 
-{1,1,2,1,2,2,2,1,0,1,1,1,1,1,0,0,1,1,1,1,2,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1,1,0,0};
+{2,2,5,3,6,6,6,3,2,4,4,4,4,2,1,2,3,5,3,4,6,1,1,2,1,1,3,1,2,2,2,1,1,2,2,2,1,3,3,3,1,1};
 
 // PM2.5 data
 // [42] = neighborhood
@@ -257,6 +257,7 @@ void setup() {
   FastLED.addLeds<LED_TYPE, 10, GRB>(leds[10], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 11, GRB>(leds[11], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 12, GRB>(leds[12], NUM_LEDS_PER_STRING);
+  FastLED.addLeds<LED_TYPE, 13, GRB>(leds[13], NUM_LEDS_PER_STRING); 
   FastLED.addLeds<LED_TYPE, 14, GRB>(leds[14], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 15, GRB>(leds[15], NUM_LEDS_PER_STRING);
   FastLED.addLeds<LED_TYPE, 16, GRB>(leds[16], NUM_LEDS_PER_STRING);
@@ -291,7 +292,6 @@ void setup() {
   
   FastLED.setBrightness(50);
 
-  Serial.begin(9600);
 
   clear();
 
@@ -330,7 +330,6 @@ void dataTest(int string) {
   int8_t data;
   for (int i = 0; i < NUM_LEDS_PER_STRING; i++) {
     leds[string][NUM_LEDS_PER_STRING - i] = colors[pm25[string][i]];
-    Serial.println(pgm_read_byte(&(pm25[string][i])));
   }
 }
 

@@ -1,29 +1,29 @@
 
 import xlrd
 
-book = xlrd.open_workbook("data/651_Cardio_hosp_VisualizeSpaceTimeCube3D1.xls")
+book = xlrd.open_workbook("data/poverty_data.xls")
 sheet = book.sheet_by_index(0)
 
-poverty_data = 0;
+poverty_data = 1;
 
 if poverty_data == 1:
    print("{", end='')
    data = sheet.col_values(6)
 
    for x in range (2, 44):
-      if round(data[x]) <= 14:
+      if round(data[x]) <= 5.5:
          print("0",end='')
-      if round(data[x]) > 14 and round(data[x]) <= 28:
+      if round(data[x]) > 5.5 and round(data[x]) <= 11:
          print("1", end='')
-      if round(data[x]) > 28 and round(data[x]) <= 42:
+      if round(data[x]) > 11 and round(data[x]) <= 16.5:
          print("2", end='')
-      if round(data[x]) > 42 and round(data[x]) <= 56:
+      if round(data[x]) > 16.5 and round(data[x]) <= 22:
          print("3", end='')
-      if round(data[x]) > 56 and round(data[x]) <= 70:
+      if round(data[x]) > 22 and round(data[x]) <= 27.5:
          print("4", end='')         
-      if round(data[x]) > 70 and round(data[x]) <= 84:
+      if round(data[x]) > 27.5 and round(data[x]) <= 33:
          print("5", end='')         
-      if round(data[x]) > 84:
+      if round(data[x]) > 33:
          print("6", end='')
 
       if x != 43:
