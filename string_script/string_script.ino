@@ -14,13 +14,21 @@ CRGB leds[NUM_STRINGS][NUM_LEDS_PER_STRING];
 CRGB indicator[NUM_LEDS];
 
 // Color info
-const CRGB color_neg_three = CRGB(0, 0, 255);
-const CRGB color_neg_two = CRGB(0, 200, 255);
-const CRGB  color_neg_one = CRGB(0, 225, 225);
-const CRGB  color_zero = CRGB(255, 255, 255);
-const CRGB  color_one = CRGB(255, 75, 0);
-const CRGB  color_two = CRGB(255, 50, 0);
-const CRGB  color_three = CRGB(255, 0, 0);
+//const CRGB color_neg_three = CRGB(22, 195, 242);
+//const CRGB color_neg_two = CRGB(89, 151, 241);
+//const CRGB  color_neg_one = CRGB(155, 107, 240);
+//const CRGB  color_zero = CRGB(222, 63, 239);
+//const CRGB  color_one = CRGB(226, 42,191);
+//const CRGB  color_two = CRGB(230, 21, 143);
+//const CRGB  color_three = CRGB(234, 0, 95);
+
+const CRGB color_neg_three = CRGB(26, 216, 237);
+const CRGB color_neg_two = CRGB(52, 188, 237);
+const CRGB  color_neg_one = CRGB(78, 161, 237);
+const CRGB  color_zero = CRGB(156, 78, 237);
+const CRGB  color_one = CRGB(182, 50, 237);
+const CRGB  color_two = CRGB(230, 21, 143);
+const CRGB  color_three = CRGB(234, 0, 95);
 
 const CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_zero, color_one, color_two, color_three};
 
@@ -300,6 +308,9 @@ void setup() {
 
   clear();
 
+//  colorTest(0);
+//  FastLED.show();
+
 }
 
 void loop() {
@@ -316,10 +327,12 @@ void clear() {
   delay(100);
 }
 
-void colorTest() {
+void colorTest(int color) {
 
-  for (int i = 0; i < 13; i++) {
-    leds[3][i] = colors[6];
+  for (int i = 0; i < NUM_STRINGS; i++) {
+    for (int j = 0; j < NUM_LEDS_PER_STRING; j++) {
+      leds[i][NUM_LEDS_PER_STRING - 1 - j] = colors[color];
+    }
   }
 
 }
@@ -363,9 +376,9 @@ void show_indicator(uint8_t dataset_char) {
 }
 
 void cycle() {
-  fade_up();
   show_dataset_cube(pm25, 0);
   FastLED.show();
+  fade_up();
   delay(5000);
   fade_down();
   
