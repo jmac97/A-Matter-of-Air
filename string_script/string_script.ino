@@ -8,8 +8,8 @@
 CRGB leds[NUM_STRINGS][NUM_LEDS_PER_STRING];
 
 // LED indicator info
-#define NUM_LEDS 5
-#define INC 1
+#define NUM_LEDS 10
+#define INC 2
 #define LED_PIN 53
 CRGB indicator[NUM_LEDS];
 
@@ -360,7 +360,7 @@ void show_dataset_percent(const char dataset[], uint8_t dataset_char) {
 void show_indicator(uint8_t dataset_char) {
   for (int i = 0; i < NUM_LEDS; i += INC) {
     if (i == dataset_char) {
-      indicator[i] = CRGB::Red;
+      indicator[i] = CRGB::White;
     } else {
       indicator[i] = CRGB::Black;
     }
