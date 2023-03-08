@@ -14,21 +14,13 @@ CRGB leds[NUM_STRINGS][NUM_LEDS_PER_STRING];
 CRGB indicator[NUM_LEDS];
 
 // Color info
-//const CRGB color_neg_three = CRGB(22, 195, 242);
-//const CRGB color_neg_two = CRGB(89, 151, 241);
-//const CRGB  color_neg_one = CRGB(155, 107, 240);
-//const CRGB  color_zero = CRGB(222, 63, 239);
-//const CRGB  color_one = CRGB(226, 42,191);
-//const CRGB  color_two = CRGB(230, 21, 143);
-//const CRGB  color_three = CRGB(234, 0, 95);
-
-const CRGB color_neg_three = CRGB(26, 216, 237);
-const CRGB color_neg_two = CRGB(52, 188, 237);
-const CRGB  color_neg_one = CRGB(78, 161, 237);
-const CRGB  color_zero = CRGB(156, 78, 237);
-const CRGB  color_one = CRGB(182, 50, 237);
-const CRGB  color_two = CRGB(230, 21, 143);
-const CRGB  color_three = CRGB(234, 0, 95);
+const CRGB color_neg_three = CRGB(0, 100, 204);
+const CRGB color_neg_two = CRGB(0, 255, 255);
+const CRGB  color_neg_one = CRGB(20, 36, 100);
+const CRGB  color_zero = CRGB(15, 15, 15);
+const CRGB  color_one = CRGB(80, 0, 50);
+const CRGB  color_two = CRGB(150, 0, 180);
+const CRGB  color_three = CRGB(255, 0, 50);
 
 const CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_zero, color_one, color_two, color_three};
 
