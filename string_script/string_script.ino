@@ -8,19 +8,27 @@
 CRGB leds[NUM_STRINGS][NUM_LEDS_PER_STRING];
 
 // LED indicator info
-#define NUM_LEDS 10
-#define INC 2
-#define LED_PIN 53
+#define NUM_LEDS 9
+#define INC 1
+#define LED_PIN 49
 CRGB indicator[NUM_LEDS];
 
 // Color info
 const CRGB color_neg_three = CRGB(0, 100, 204);
 const CRGB color_neg_two = CRGB(0, 255, 255);
 const CRGB  color_neg_one = CRGB(20, 36, 100);
-const CRGB  color_zero = CRGB(15, 15, 15);
+const CRGB  color_zero = CRGB(50, 50, 50);
 const CRGB  color_one = CRGB(80, 0, 50);
 const CRGB  color_two = CRGB(150, 0, 180);
 const CRGB  color_three = CRGB(255, 0, 50);
+
+//const CRGB color_neg_three = CRGB(0, 0, 255);
+//const CRGB color_neg_two = CRGB(0, 200, 255);
+//const CRGB  color_neg_one = CRGB(0, 225, 225);
+//const CRGB  color_zero = CRGB(255, 255, 255);
+//const CRGB  color_one = CRGB(255, 75, 0);
+//const CRGB  color_two = CRGB(255, 50, 0);
+//const CRGB  color_three = CRGB(255, 0, 0);
 
 const CRGB  colors[7] = {color_neg_three, color_neg_two, color_neg_one, color_zero, color_one, color_two, color_three};
 
@@ -32,8 +40,8 @@ const uint8_t button_cardio = A11;
 const uint8_t button_poverty = A12;
 
 // Brightness settings
-uint8_t brightness_og = 42;
-int brightness = 42;
+uint8_t brightness_og = 21;
+int brightness = 21;
 uint8_t brightness_inc = 1;
 uint8_t brightness_speed = 10;
 
@@ -299,10 +307,6 @@ void setup() {
   FastLED.setBrightness(brightness_og);
 
   clear();
-
-//  colorTest(0);
-//  FastLED.show();
-
 }
 
 void loop() {
@@ -349,7 +353,7 @@ void show_dataset_cube(const char dataset[][12], uint8_t dataset_char) {
 
 void show_dataset_percent(const char dataset[], uint8_t dataset_char) {
   show_indicator(dataset_char);
-
+  
   for (int i = 0; i < NUM_STRINGS; i++) {
     for (int j = 0; j < NUM_LEDS_PER_STRING; j++) {
       leds[i][j] = colors[dataset[i]];
@@ -357,10 +361,10 @@ void show_dataset_percent(const char dataset[], uint8_t dataset_char) {
   }
 }
 
-void show_indicator(uint8_t dataset_char) {
+void show_indicator(int dataset_char) {
   for (int i = 0; i < NUM_LEDS; i += INC) {
     if (i == dataset_char) {
-      indicator[i] = CRGB::White;
+      indicator[i] = CRGB(255, 0, 0);
     } else {
       indicator[i] = CRGB::Black;
     }
@@ -374,25 +378,25 @@ void cycle() {
   delay(5000);
   fade_down();
   
-  show_dataset_cube(c_asthma, 1);
+  show_dataset_cube(c_asthma, 2);
   FastLED.show();
   fade_up();
   delay(5000);
   fade_down();
   
-  show_dataset_cube(resp, 2);
+  show_dataset_cube(resp, 4);
   FastLED.show();
   fade_up();
   delay(5000);
   fade_down();
   
-  show_dataset_cube(cardio, 3);
+  show_dataset_cube(cardio, 6);
   FastLED.show();
   fade_up();
   delay(5000);
   fade_down();
   
-  show_dataset_percent(poverty, 4);
+  show_dataset_percent(poverty, 8);
   FastLED.show();
   fade_up();
   delay(5000);
@@ -407,25 +411,25 @@ void pm25_ISR() {
 
 void c_asthma_ISR() {
   delay(150);
-  show_dataset_cube(c_asthma, 1);
+  show_dataset_cube(c_asthma, 2);
   FastLED.show();
 }
 
 void resp_ISR() {
   delay(150);
-  show_dataset_cube(resp, 2);
+  show_dataset_cube(resp, 4);
   FastLED.show();
 }
 
 void cardio_ISR() {
   delay(150);
-  show_dataset_cube(cardio, 3);
+  show_dataset_cube(cardio, 6);
   FastLED.show();
 }
 
 void poverty_ISR() {
   delay(150);
-  show_dataset_percent(poverty, 4);
+  show_dataset_percent(poverty, 8);
   FastLED.show();
 }
 
